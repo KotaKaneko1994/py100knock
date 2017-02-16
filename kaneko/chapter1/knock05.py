@@ -1,16 +1,12 @@
 # -*- encoding: utf-8 -*-
 def n_gram(s, n):
     n_gram = []
-    s_len = len(s)
-    for i in range(s_len):
-        forward = i + n
-        if forward >= s_len:
-            forward = s_len
-        n_gram.append(s[i:forward])
+    for i in range(len(s) - n + 1):
+        n_gram.append(s[i:i+n])
 
     return n_gram
 
-if __name__ == "__main":
+if __name__ == "__main__":
     s = u"I am an NLPer"
     print(n_gram(s.split(), 2))
     print(n_gram(s.replace(" ", ""), 2))
