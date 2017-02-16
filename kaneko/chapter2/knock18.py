@@ -12,15 +12,14 @@ if __name__ == '__main__':
         quit()
     file_path = argv[1]
 
-    word_set = set()
+    data_frame = []
     with open(file_path) as f:
         reader = csv.reader(f, delimiter="\t")
         for row in reader:
-            word_set.add(row[0].encode("utf-8"))
+            data_frame.append(row)
 
-    pp("文字種類 : ")
-    pp(word_set)
-    pp("文字数：" + str(len(word_set)))
+    sorted(data_frame, key=lambda data:data[2], reverse=True)
+    pp(data_frame)
 
 
 

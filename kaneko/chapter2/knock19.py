@@ -12,15 +12,16 @@ if __name__ == '__main__':
         quit()
     file_path = argv[1]
 
-    word_set = set()
+    key_hist = {}
     with open(file_path) as f:
         reader = csv.reader(f, delimiter="\t")
         for row in reader:
-            word_set.add(row[0].encode("utf-8"))
+            if row[0] not in key_hist:
+                key_hist[row[0]] = 0
+            key_hist[row[0]] += 1
 
-    pp("文字種類 : ")
-    pp(word_set)
-    pp("文字数：" + str(len(word_set)))
+    for k,v in sorted(key_hist.items(), key=lambda x:x[1], reverse=True):
+        pp(k + ":" + str(v))
 
 
 
