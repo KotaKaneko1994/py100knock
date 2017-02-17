@@ -1,4 +1,6 @@
 # -*- encoding: utf-8 -*-
+# cut -f1 hightemp.txt | sort | uniq -c | sort -r
+
 import sys
 import csv
 from prettyprint import pp

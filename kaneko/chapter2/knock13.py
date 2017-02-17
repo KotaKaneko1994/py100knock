@@ -2,23 +2,38 @@
 import sys
 import csv
 
-def merge_files(file_list, filename="merge.txt"):
-    with open(filename, "w") as write_f:
-        cols = []
-        for file_path in file_list:
-            with open(file_path) as f:
-                col = []
-                for row in f:
-                    col.append(row.rstrip())
-                cols.append(col)
+# def merge_files(file_list, filename="merge.txt"):
+#     with open(filename, "w") as write_f:
+#         cols = []
+#         for file_path in file_list:
+#             with open(file_path) as f:
+#                 col = []
+#                 for row in f:
+#                     col.append(row.rstrip())
+#                 cols.append(col)
+#
+#         for i in range(len(cols[0])):
+#             for j in range(len(cols)):
+#                 write_f.write(cols[j][i])
+#                 if j != len(cols)-1:
+#                     write_f.write("\t")
+#             write_f.write("\n")
 
-        for i in range(len(cols[0])):
-            for j in range(len(cols)):
-                write_f.write(cols[j][i])
-                if j != len(cols)-1:
+def merge_files(file_list, filename="merge1.txt"):
+    with open(filename, "w") as write_f:
+        fp_list = []
+        for file_path in file_list:
+            fp_list.append(open(file_path).readlines())
+
+        for i in range(len(fp_list[0])):
+            for j, fp in enumerate(fp_list):
+                write_f.write(fp[i].rstrip())
+                if j != len(fp_list)-1:
                     write_f.write("\t")
             write_f.write("\n")
 
+        for fp in fp_list:
+            fp.close()
 
 if __name__ == '__main__':
     argv = sys.argv
@@ -32,7 +47,6 @@ if __name__ == '__main__':
         file_list.append(file_path)
 
     merge_files(file_list)
-
 
 
 

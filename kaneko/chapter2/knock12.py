@@ -14,7 +14,6 @@ def saveCols(file_path, cols):
         val = []
         for row in reader:
             val.append(row)
-    r = []
     for i in cols:
         with open("col" + str(i+1) + ".txt", "w") as f:
             for row in val:
