@@ -12,6 +12,5 @@ if __name__ == '__main__':
     num_row = int(argv[2])
 
     with open(file_path) as f:
-        i = 0
         lines = f.readlines()[-num_row:]
         print("".join(lines))
