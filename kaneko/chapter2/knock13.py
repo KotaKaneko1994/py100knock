@@ -32,9 +32,6 @@ def merge_files(file_list, filename="merge1.txt"):
                     write_f.write("\t")
             write_f.write("\n")
 
-        for fp in fp_list:
-            fp.close()
-
 if __name__ == '__main__':
     argv = sys.argv
     if len(argv) < 2:
